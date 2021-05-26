@@ -104,9 +104,29 @@ public class JsoupScraper {
      *
      * @return Una lista con todas las URLs de los hiperenlaces
      */
-    public List<String> obtenerHiperenlacesImagenes() {
+    public List<String> obtenerHiperenlacesImagenes() throws IOException{
+        //array donde se guardarán los enlaces img
+        ArrayList<String> hipenlacesimg = new ArrayList<String>();
+        File doc = new File("Jsoup_IMGLink.txt");
+        doc.delete();
+        File newdoc = new File("Jsoup_IMG.txt");
         
-        return new ArrayList<>();
+        FileWriter f2 = new FileWriter(newdoc, false);
+        Elements links = doc.select("IMG[src]");
+        //mete en el arraylist los links y los escribe en el documento
+        for (Element link : links) {
+
+            hipenlacesimg.add(link.attr("src"));
+            f2.write(link.attr("src") + nextline);
+        }
+
+        //Borra los elementos nulos del ArrayList
+        hipenlacesimg.removeAll(Arrays.asList(null, ""));
+
+        f2.close();
+
+        //devuelve el arraylist
+        return hipenlacesimg;
     }
 
 
