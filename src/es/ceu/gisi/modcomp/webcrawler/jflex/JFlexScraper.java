@@ -107,17 +107,17 @@ public class JFlexScraper {
             tk = analizador.nextToken();
         }
     }
-    }
+    
 
     // Esta clase debe contener tu automata programado...
     public ArrayList<String> obtenerHiperenlaces() {
         // Habrá que programarlo..
-        return new ArrayList<String>();
+        return enlacesA;
     }
 
     public ArrayList<String> obtenerHiperenlacesImagenes() {
         // Habrá que programarlo..
-        return new ArrayList<String>();
+        return enlacesIMG;
     }
 
     public boolean esDocumentoHTMLBienBalanceado() {
@@ -126,3 +126,4 @@ public class JFlexScraper {
         //return !(malBanlanceado && !etiquetasAbiertas.empty());
     }
 }
+       

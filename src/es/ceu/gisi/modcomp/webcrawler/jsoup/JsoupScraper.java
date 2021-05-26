@@ -12,6 +12,7 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 /**
  * Esta clase encapsula toda la lógica de interacción con el analizador Jsoup.
@@ -28,6 +29,7 @@ public class JsoupScraper {
      *
      * @param url Una URL que apunte a un documento HTML (p.e.
      *            http://www.servidor.com/index.html)
+     * @throws java.io.IOException
      */
     public JsoupScraper(URL url) throws IOException {
         // La variable deberá inicializarse de alguna manera utilizando una URL...
@@ -40,6 +42,7 @@ public class JsoupScraper {
      * que se pasa como parámetro.
      *
      * @param html Un documento HTML contenido en un String.
+     * @throws java.io.IOException
      */
     public JsoupScraper(String html) throws IOException {
         doc = Jsoup.parse(html);
@@ -52,10 +55,12 @@ public class JsoupScraper {
      *
      * @return El número de etiquetas de ese tipo que hay en el documento HTML
      */
-    public int estadisticasEtiqueta(String etiqueta) {
-        // RELLENAR 
+    public int numEtiqueta(String etiqueta) {
+        // nos cuenta el numero de etiquetas que tenemos en el documento
         // Habrá que programarlo..
-        return 0;
+        Elements etiquetas = doc.select(etiqueta);
+        int n = etiquetas.size();
+        return n;
     }
 
     /**
@@ -64,8 +69,9 @@ public class JsoupScraper {
      * @return Una lista con todas las URLs de los hiperenlaces
      */
     public List<String> obtenerHiperenlaces() {
-        // Habrá que programarlo..
-        return new ArrayList<String>();
+        // Los hiperenlaces debemos guardarlos en un arrayList
+        ArrayList<String> hipenlaces = new ArrayList<>();
+        return new ArrayList<>();
     }
 
     /**
@@ -74,9 +80,8 @@ public class JsoupScraper {
      * @return Una lista con todas las URLs de los hiperenlaces
      */
     public List<String> obtenerHiperenlacesImagenes() {
-        // Los hiperenlaces debemos guardarlos en un arrayList
-        ArrayList<String> hipenlaces = new ArrayList<String>();
-        return new ArrayList<String>();
+        
+        return new ArrayList<>();
     }
 
 
