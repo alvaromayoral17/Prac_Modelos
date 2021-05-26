@@ -53,6 +53,7 @@ public class JsoupScraper {
      * @return El número de etiquetas de ese tipo que hay en el documento HTML
      */
     public int estadisticasEtiqueta(String etiqueta) {
+        // RELLENAR 
         // Habrá que programarlo..
         return 0;
     }
@@ -73,7 +74,8 @@ public class JsoupScraper {
      * @return Una lista con todas las URLs de los hiperenlaces
      */
     public List<String> obtenerHiperenlacesImagenes() {
-        // Habrá que programarlo..
+        // Los hiperenlaces debemos guardarlos en un arrayList
+        ArrayList<String> hipenlaces = new ArrayList<String>();
         return new ArrayList<String>();
     }
 
@@ -87,6 +89,7 @@ public class JsoupScraper {
      */
     public String obtenerContenidoImg() {
         Element elemento = doc.select("IMG").first();
+        //obtine lo siguiente a "src"
         String imagen = elemento.attr("src");
         return imagen;
     }
