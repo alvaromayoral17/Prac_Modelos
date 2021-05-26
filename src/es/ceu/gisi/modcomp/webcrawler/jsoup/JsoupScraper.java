@@ -6,9 +6,11 @@
 package es.ceu.gisi.modcomp.webcrawler.jsoup;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,7 +24,8 @@ import org.jsoup.select.Elements;
  */
 public class JsoupScraper {
 
-    private final Document doc;
+    public final Document doc;
+    String nextline = System.getProperty("line.separator");
 
     /**
      * Este constructor crea un documento a partir de la URL de la página web a
@@ -69,13 +72,31 @@ public class JsoupScraper {
      *
      * @return Una lista con todas las URLs de los hiperenlaces
      */
-    public List<String> obtenerHiperenlaces() {
+    public List<String> obtenerHiperenlaces() throws IOException {
         // Los hiperenlaces debemos guardarlos en un arrayList
         ArrayList<String> hipenlaces = new ArrayList<>();
         File doc = new File("Jsoup_Link.txt");
         doc.delete();
         File newdoc = new File("Jsoup_Link.txt");
-        return new ArrayList<>();
+        //nuevo documento donde se escribiran los enlaces
+        FileWriter fw = new FileWriter(newdoc, false);
+        Elements links;
+        links = doc.select("a[href]");
+        //Con este bucle for conseguimos introducir los links 
+        //en el array y escribirlos en el doc.
+        for (Element link : links) {
+
+            hipenlaces.add(link.attr("href"));
+            fw.write(link.attr("href") + nextline);
+        }
+        
+        //Borra los elementos nulos del ArrayList
+        hipenlaces.removeAll(Arrays.asList(null, ""));
+
+        fw.close();
+        
+        //devuelve el arraylist
+        return hipenlaces;
     }
 
     /**
