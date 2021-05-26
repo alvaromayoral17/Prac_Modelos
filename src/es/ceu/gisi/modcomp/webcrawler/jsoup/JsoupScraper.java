@@ -5,6 +5,7 @@
  */
 package es.ceu.gisi.modcomp.webcrawler.jsoup;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -71,6 +72,9 @@ public class JsoupScraper {
     public List<String> obtenerHiperenlaces() {
         // Los hiperenlaces debemos guardarlos en un arrayList
         ArrayList<String> hipenlaces = new ArrayList<>();
+        File doc = new File("Jsoup_Link.txt");
+        doc.delete();
+        File newdoc = new File("Jsoup_Link.txt");
         return new ArrayList<>();
     }
 
