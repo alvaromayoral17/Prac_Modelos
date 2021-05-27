@@ -28,7 +28,7 @@ public class JFlexScraper {
     public JFlexScraper(File fichero) throws FileNotFoundException, IOException {
         Reader reader = new BufferedReader(new FileReader(fichero));
         analizador = new HTMLParser(reader);
-    Token tk = analizador.nextToken();
+        Token tk = analizador.nextToken();
         
         int estado = 0;
         
@@ -76,7 +76,6 @@ public class JFlexScraper {
                         
                     }
                 }
-                //Por completar
                     break;
                 case 3:
                     if (tk.getTipo()== Tipo.IGUAL){
@@ -122,8 +121,8 @@ public class JFlexScraper {
 
     public boolean esDocumentoHTMLBienBalanceado() {
         // Habrá que programarlo..
-        return true;
-        //return !(malBanlanceado && !etiquetasAbiertas.empty());
+        //return true;
+        return !(malBalanceado && !etiquetasAbiertas.empty());
     }
 }
        
